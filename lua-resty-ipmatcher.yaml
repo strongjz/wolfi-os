@@ -1,0 +1,50 @@
+package:
+  name: lua-resty-ipmatcher
+  version: 0.0_git20210506
+  epoch: 0
+  description: "High-performance match IP address for Nginx + Lua"
+  target-architecture:
+    - all
+  copyright:
+    - paths:
+        - "*"
+      license: Apache-2.0
+  dependencies:
+    runtime:
+
+environment:
+  contents:
+    packages:
+      - wolfi-base
+      - busybox
+      - ca-certificates-bundle
+      - build-base
+      - luajit
+
+pipeline:
+  - uses: fetch
+    with:
+      uri: https://github.com/api7/lua-resty-ipmatcher/archive/211e0d2eb8bbb558b79368f89948a0bafdc23654.tar.gz
+      expected-sha256: b8dbd502751140993a852381bcd8e98a402454596bd91838c1e51268d42db261
+      strip-components: 1
+
+  - name: "Configure lua-resty-ipmatcher"
+    runs: |
+      export LUAJIT_LIB=/usr/local/lib
+      export LUA_LIB_DIR="$LUAJIT_LIB/lua"
+      export LUAJIT_INC=/usr/local/include/luajit-2.1
+
+      ln -s /usr/local/bin/luajit /usr/local/bin/lua
+      ln -s "$LUAJIT_INC" /usr/local/include/lua
+
+      export LUA_INCLUDE_DIR=/usr/local/include/luajit-2.1
+      ln -s $LUA_INCLUDE_DIR /usr/include/lua5.1
+      ls -lah /usr/local/lib
+
+      #https://github.com/api7/lua-resty-ipmatcher/blob/master/Makefile#L22
+      export INST_LUADIR="${{targets.destdir}}"
+
+      make DESTDIR="${{targets.destdir}}" install
+
+update:
+  enabled: false

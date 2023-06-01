@@ -1,0 +1,29 @@
+package:
+  name: lua-resty-string
+  version: 0.0_git20210711
+  epoch: 0
+  description: "String utilities and common hash functions for ngx_lua and LuaJIT"
+  copyright:
+    - license: BSD
+  dependencies:
+    runtime:
+
+environment:
+  contents:
+    packages:
+      - wolfi-base
+      - busybox
+      - ca-certificates-bundle
+      - build-base
+
+pipeline:
+  - uses: fetch
+    with:
+      uri: https://github.com/openresty/lua-resty-string/archive/ace36f2dde09451c377c839117ade45eb02d460.tar.gz
+      expected-sha256: 462c6b38792bab4ca8212bdfd3f2e38f6883bb45c8fb8a03474ea813e0fab853
+      strip-components: 1
+
+  - uses: autoconf/make-install
+
+update:
+  enabled: false
