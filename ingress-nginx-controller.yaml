@@ -20,12 +20,14 @@ environment:
       - git
       - openssh-client
       - libcap
+
 pipeline:
   - uses: git-checkout
     with:
       repository: https://github.com/kubernetes/ingress-nginx
       tag: controller-v${{package.version}}
       expected-commit: 3476232f5c38383dd157ddaff3b4c7cebd57284e
+
   - name: Build ingress-nginx controller from source
     runs: |
       set -o errexit
@@ -63,3 +65,9 @@ pipeline:
 
       setcap cap_net_bind_service=+ep ${{targets.destdir}}/nginx-ingress-controller \
       && setcap -v cap_net_bind_service=+ep ${{targets.destdir}}/nginx-ingress-controller
+
+updates:
+  enabled: true
+  github:
+    identifier: kubernetes/ingress-nginx
+    strip-prefix: controller-v

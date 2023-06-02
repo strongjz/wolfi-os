@@ -120,7 +120,7 @@ pipeline:
       strip-components: 0
 
   - runs: |
-     rm -rf v0.33.tar.gz
+      rm -rf v0.33.tar.gz
 
   - uses: fetch
     with:
@@ -169,6 +169,7 @@ pipeline:
       uri: https://github.com/leev/ngx_http_geoip2_module/archive/a26c6beed77e81553686852dceb6c7fdacc5970d.tar.gz
       expected-sha256: 4c1933434572226942c65b2f2b26c8a536ab76aa771a3c7f6c2629faa764976b
       strip-components: 0
+
   - uses: fetch
     with:
       uri: https://github.com/yaoweibin/nginx_ajp_module/archive/fcbb2ccca4901d317ecd7a9dabb3fec9378ff40f.tar.gz
@@ -183,7 +184,6 @@ pipeline:
 
   - name: 'Configure nginx'
     runs: |
-
       export BUILD_PATH="${PWD}"
       echo "BUILD_PATH $BUILD_PATH"
       echo "Arch: $(uname -m)"
