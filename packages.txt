@@ -713,7 +713,7 @@ docker-credential-gcr
 kyverno
 mimalloc
 ssdeep
-opentracing
+opentracing-cpp
 msgpack
 datadog-cpp
 yaml-cpp

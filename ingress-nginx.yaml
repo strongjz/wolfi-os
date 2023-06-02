@@ -60,7 +60,7 @@ environment:
       - libxml2
       - python3
       - libsrt
-      - opentracing-cpp-dev
+      - opentracing-cpp
       - msgpack
       - datadog-cpp
       - yaml-cpp
@@ -190,17 +190,15 @@ pipeline:
       # improve compilation times
       CORES=$(($(grep -c ^processor /proc/cpuinfo) - 1))
 
-      export MAKEFLAGS=-j${CORES}
-      export CTEST_BUILD_FLAGS=${MAKEFLAGS}
-
-      export LUAJIT_LIB=/usr/local/lib
+      export LUAJIT_LIB=${{targets.destdir}}/usr/local/lib
       export LUA_LIB_DIR="$LUAJIT_LIB/lua"
-      export LUAJIT_INC=/usr/local/include/luajit-2.1
-      export LUA_INCLUDE_DIR=/usr/local/include/luajit-2.1
+      export LUAJIT_INC=${{targets.destdir}}/usr/local/include/luajit-2.1
+      ln -s ${{targets.destdir}}/usr/local/bin/luajit ${{targets.destdir}}/usr/local/bin/lua
+      ln -s "$LUAJIT_INC" ${{targets.destdir}}/usr/local/include/lua
 
-      ln -s /usr/local/bin/luajit /usr/local/bin/lua
-      ln -s "$LUAJIT_INC" /usr/local/include/lua
-      ln -s $LUA_INCLUDE_DIR /usr/include/lua5.1
+      ls -la $LUA_LIB_DIR
+
+      ls -la $LUAJIT_INC
 
       ARCH=$(uname -m)
 
@@ -218,17 +216,22 @@ pipeline:
       git submodule update
 
 
-      git clone --depth=1 -b ${{vars.MODSECURITY_LIB_VERSION}} https://github.com/SpiderLabs/ModSecurity
-
+      git clone -n https://github.com/SpiderLabs/ModSecurity
+      cd ModSecurity/
+      git branch
+      git checkout ${{vars.MODSECURITY_LIB_VERSION}}
+      git submodule init
+      git submodule update
       mkdir -p ${{targets.destdir}}/etc/nginx/modsecurity
-      cp ModSecurity/modsecurity.conf-recommended ${{targets.destdir}}/etc/nginx/modsecurity/modsecurity.conf
-      cp ModSecurity/unicode.mapping ${{targets.destdir}}/etc/nginx/modsecurity/unicode.mapping
+      cp modsecurity.conf-recommended ${{targets.destdir}}/etc/nginx/modsecurity/modsecurity.conf
+      cp unicode.mapping ${{targets.destdir}}/etc/nginx/modsecurity/unicode.mapping
 
       # Replace serial logging with concurrent
       sed -i 's|SecAuditLogType Serial|SecAuditLogType Concurrent|g' ${{targets.destdir}}/etc/nginx/modsecurity/modsecurity.conf
 
       # Concurrent logging implies the log is stored in several files
       echo "SecAuditLogStorageDir /var/log/audit/" >> ${{targets.destdir}}/etc/nginx/modsecurity/modsecurity.conf
+
 
       # Download owasp modsecurity crs
       cd ${{targets.destdir}}/etc/nginx/
@@ -239,7 +242,6 @@ pipeline:
       mv crs-setup.conf.example crs-setup.conf
       mv rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf.example rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
       mv rules/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf.example rules/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf
-      cd ${{targets.destdir}}/etc/nginx/
 
       # OWASP CRS v3 rules
       echo '
@@ -282,12 +284,12 @@ pipeline:
 
       cd "$BUILD_PATH/nginx-${{vars.NGINX_VERSION}}"
       # apply nginx patches
-      for PATCH in `ls patches`;do
+      for PATCH in `ls $BUILD_PATH/patches`;do
         echo "Patch: $PATCH"
         if [[ "$PATCH" == *.txt ]]; then
-          patch -p0 < patches/$PATCH
+          patch -p0 < $BUILD_PATH/patches/$PATCH
         else
-          patch -p1 < patches/$PATCH
+          patch -p1 < $BUILD_PATH/patches/$PATCH
         fi
       done
 

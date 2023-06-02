@@ -26,16 +26,6 @@ pipeline:
 
   - name: "Configure"
     runs: |
-      export LUAJIT_LIB=/usr/local/lib
-      export LUA_LIB_DIR="$LUAJIT_LIB/lua"
-      export LUAJIT_INC=/usr/local/include/luajit-2.1
-
-      ln -s /usr/local/bin/luajit /usr/local/bin/lua
-      ln -s "$LUAJIT_INC" /usr/local/include/lua
-
-      export LUA_INCLUDE_DIR=/usr/local/include/luajit-2.1
-      ln -s $LUA_INCLUDE_DIR /usr/include/lua5.1
-
       make
       make DESTDIR="${{targets.destdir}}" install
 

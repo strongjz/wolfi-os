@@ -20,7 +20,7 @@ environment:
       - cmake
       - curl
       - curl-dev
-      - opentracing
+      - opentracing-cpp
       - msgpack
 
 pipeline:
