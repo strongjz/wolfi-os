@@ -69,35 +69,36 @@ environment:
       - luajit
 
 vars:
-  NGINX_VERSION: 1.21.6
-  NGINX_SHA: 66dc7081488811e9f925719e34d1b4504c2801c81dee2920e5452a86b11405ae
-  NDK_VERSION: 0.3.1
-  NDK_VERSION_SHA: 0e971105e210d272a497567fa2e2c256f4e39b845a5ba80d373e26ba1abfbd85
-  SETMISC_VERSION: '0.33'
-  SETMISC_VERSION_SHA: cd5e2cc834bcfa30149e7511f2b5a2183baf0b70dc091af717a89a64e44a2985
-  MORE_HEADERS_VERSION: '0.33'
-  MORE_HEADERS_VERSION_SHA: a3dcbab117a9c103bc1ea5200fc00a7b7d2af97ff7fd525f16f8ac2632e30fbf
-  NGINX_DIGEST_AUTH: 1.0.0
-  NGINX_DIGEST_AUTH_SHA: f09851e6309560a8ff3e901548405066c83f1f6ff88aa7171e0763bd9514762b
-  NGINX_SUBSTITUTIONS: b8a71eacc7f986ba091282ab8b1bbbc6ae1807e0
-  NGINX_SUBSTITUTIONS_SHA: a98b48947359166326d58700ccdc27256d2648218072da138ab6b47de47fbd8f
-  NGINX_OPENTRACING_VERSION: 0.19.0
-  NGINX_OPENTRACING_VERSION_SHA: 6f97776ebdf019b105a755c7736b70bdbd7e575c7f0d39db5fe127873c7abf17
-  MODSECURITY_NGINX_VERSION: 1.0.3
-  MODSECURITY_NGINX_VERSION_SHA: 32a42256616cc674dca24c8654397390adff15b888b77eb74e0687f023c8751b
-  OWASP_MODSECURITY_CRS_VERSION: v3.3.2
-  LUA_NGX_VERSION: 0.10.21
-  LUA_NGX_VERSION_SHA: 9db756000578efaecb43bea4fc6cf631aaa80988d86ffe5d3afeb9927895ffad
-  LUA_STREAM_NGX_VERSION: 0.0.11
-  LUA_STREAM_NGX_VERSION_SHA: c7924f28cb014a99636e747ea907724dd55f60e180cb92cde6e8ed48d2278f27
-  LUA_UPSTREAM_VERSION: 8aa93ead98ba2060d4efd594ae33a35d153589bf
-  LUA_UPSTREAM_VERSION_SHA: a92c9ee6682567605ece55d4eed5d1d54446ba6fba748cff0a2482aea5713d5f
-  LUA_CJSON_VERSION: 4b350c531de3d71008c77ae94e59275b8371b4dc
-  LUA_CJSON_VERSION_SHA: 8d602af2669fb386931760916a39f6c9034f2363c4965f215042c086b8215238
-  GEOIP2_VERSION: a26c6beed77e81553686852dceb6c7fdacc5970d
-  GEOIP2_VERSION_SHA: 4c1933434572226942c65b2f2b26c8a536ab76aa771a3c7f6c2629faa764976b
-  NGINX_AJP_VERSION: fcbb2ccca4901d317ecd7a9dabb3fec9378ff40f
-  NGINX_AJP_VERSION_SHA: 778fcca851bd69dabfb382dc827d2ee07662f7eca36b5e66e67d5512bad75ef8
+  NGINX_VERSION: "1.21.6"
+  NGINX_SHA: "66dc7081488811e9f925719e34d1b4504c2801c81dee2920e5452a86b11405ae"
+  NDK_VERSION: "0.3.1"
+  NDK_VERSION_SHA: "0e971105e210d272a497567fa2e2c256f4e39b845a5ba80d373e26ba1abfbd85"
+  SETMISC_VERSION: "0.33"
+  SETMISC_VERSION_SHA: "cd5e2cc834bcfa30149e7511f2b5a2183baf0b70dc091af717a89a64e44a2985"
+  MORE_HEADERS_VERSION: "0.33"
+  MORE_HEADERS_VERSION_SHA: "a3dcbab117a9c103bc1ea5200fc00a7b7d2af97ff7fd525f16f8ac2632e30fbf"
+  NGINX_DIGEST_AUTH: "1.0.0"
+  NGINX_DIGEST_AUTH_SHA: "f09851e6309560a8ff3e901548405066c83f1f6ff88aa7171e0763bd9514762b"
+  NGINX_SUBSTITUTIONS: "b8a71eacc7f986ba091282ab8b1bbbc6ae1807e0"
+  NGINX_SUBSTITUTIONS_SHA: "a98b48947359166326d58700ccdc27256d2648218072da138ab6b47de47fbd8f"
+  NGINX_OPENTRACING_VERSION: "0.19.0"
+  NGINX_OPENTRACING_VERSION_SHA: "6f97776ebdf019b105a755c7736b70bdbd7e575c7f0d39db5fe127873c7abf17"
+  MODSECURITY_NGINX_VERSION: "1.0.3"
+  MODSECURITY_NGINX_VERSION_SHA: "32a42256616cc674dca24c8654397390adff15b888b77eb74e0687f023c8751b"
+  MODSECURITY_LIB_VERSION: "e9a7ba4a60be48f761e0328c6dfcc668d70e35a0"
+  OWASP_MODSECURITY_CRS_VERSION: "v3.3.2"
+  LUA_NGX_VERSION: "0.10.21"
+  LUA_NGX_VERSION_SHA: "9db756000578efaecb43bea4fc6cf631aaa80988d86ffe5d3afeb9927895ffad"
+  LUA_STREAM_NGX_VERSION: "0.0.11"
+  LUA_STREAM_NGX_VERSION_SHA: "c7924f28cb014a99636e747ea907724dd55f60e180cb92cde6e8ed48d2278f27"
+  LUA_UPSTREAM_VERSION: "8aa93ead98ba2060d4efd594ae33a35d153589bf"
+  LUA_UPSTREAM_VERSION_SHA: "a92c9ee6682567605ece55d4eed5d1d54446ba6fba748cff0a2482aea5713d5f"
+  LUA_CJSON_VERSION: "4b350c531de3d71008c77ae94e59275b8371b4dc"
+  LUA_CJSON_VERSION_SHA: "8d602af2669fb386931760916a39f6c9034f2363c4965f215042c086b8215238"
+  GEOIP2_VERSION: "a26c6beed77e81553686852dceb6c7fdacc5970d"
+  GEOIP2_VERSION_SHA: "4c1933434572226942c65b2f2b26c8a536ab76aa771a3c7f6c2629faa764976b"
+  NGINX_AJP_VERSION: "fcbb2ccca4901d317ecd7a9dabb3fec9378ff40f"
+  NGINX_AJP_VERSION_SHA: "78fcca851bd69dabfb382dc827d2ee07662f7eca36b5e66e67d5512bad75ef8"
 
 pipeline:
   - uses: fetch
@@ -117,6 +118,9 @@ pipeline:
       uri: https://github.com/openresty/set-misc-nginx-module/archive/v0.33.tar.gz
       expected-sha256: cd5e2cc834bcfa30149e7511f2b5a2183baf0b70dc091af717a89a64e44a2985
       strip-components: 0
+
+  - runs: |
+     rm -rf v0.33.tar.gz
 
   - uses: fetch
     with:
@@ -144,13 +148,13 @@ pipeline:
 
   - uses: fetch
     with:
-      uri: https://github.com/openresty/lua-nginx-module/archive/0.10.21.tar.gz
+      uri: https://github.com/openresty/lua-nginx-module/archive/v0.10.21.tar.gz
       expected-sha256: 9db756000578efaecb43bea4fc6cf631aaa80988d86ffe5d3afeb9927895ffad
       strip-components: 0
 
   - uses: fetch
     with:
-      uri: https://github.com/openresty/stream-lua-nginx-module/archive/0.0.11.tar.gz
+      uri: https://github.com/openresty/stream-lua-nginx-module/archive/v0.0.11.tar.gz
       expected-sha256: c7924f28cb014a99636e747ea907724dd55f60e180cb92cde6e8ed48d2278f27
       strip-components: 0
 
@@ -165,7 +169,6 @@ pipeline:
       uri: https://github.com/leev/ngx_http_geoip2_module/archive/a26c6beed77e81553686852dceb6c7fdacc5970d.tar.gz
       expected-sha256: 4c1933434572226942c65b2f2b26c8a536ab76aa771a3c7f6c2629faa764976b
       strip-components: 0
-
   - uses: fetch
     with:
       uri: https://github.com/yaoweibin/nginx_ajp_module/archive/fcbb2ccca4901d317ecd7a9dabb3fec9378ff40f.tar.gz
@@ -180,12 +183,7 @@ pipeline:
 
   - name: 'Configure nginx'
     runs: |
-      set -o errexit
-      set -o nounset
-      set -o pipefail
 
-      ls -lah
-      ls -lah etc/nginx
       export BUILD_PATH="${PWD}"
       echo "BUILD_PATH $BUILD_PATH"
       echo "Arch: $(uname -m)"
@@ -223,7 +221,7 @@ pipeline:
       git submodule update
 
 
-      git clone --depth=1 -b ${{vars.MODSECURITY_LIB_VERSION}} https://github.com/SpiderLabs/ModSecurity
+      git clone --depth=1 -b ${{ vars.MODSECURITY_LIB_VERSION }} https://github.com/SpiderLabs/ModSecurity
 
       mkdir -p ${{targets.destdir}}/etc/nginx/modsecurity
       cp ModSecurity/modsecurity.conf-recommended ${{targets.destdir}}/etc/nginx/modsecurity/modsecurity.conf
@@ -337,18 +335,18 @@ pipeline:
       --with-http_gunzip_module"
 
       WITH_MODULES=" \
-      --add-module=${BUILD_PATH}/ngx_devel_kit-${{vars.NDK_VERSION}} \
-      --add-module=${BUILD_PATH}/set-misc-nginx-module-${{vars.SETMISC_VERSION}} \
-      --add-module=${BUILD_PATH}/headers-more-nginx-module-${{vars.MORE_HEADERS_VERSION}} \
-      --add-module=${BUILD_PATH}/ngx_http_substitutions_filter_module-${{vars.NGINX_SUBSTITUTIONS}}  \
-      --add-module=${BUILD_PATH}/lua-nginx-module-${{vars.LUA_NGX_VERSION}}  \
-      --add-module=${BUILD_PATH}/stream-lua-nginx-module-${{vars.LUA_STREAM_NGX_VERSION}}  \
-      --add-module=${BUILD_PATH}/lua-upstream-nginx-module-${{vars.LUA_UPSTREAM_VERSION}}  \
-      --add-module=${BUILD_PATH}/nginx_ajp_module-${{vars.NGINX_AJP_VERSION}}  \
-      --add-dynamic-module=${BUILD_PATH}/nginx-http-auth-digest-${{vars.NGINX_DIGEST_AUTH}}  \
-      --add-dynamic-module=${BUILD_PATH}/nginx-opentracing-${{vars.NGINX_OPENTRACING_VERSION}}/opentracing \
-      --add-dynamic-module=${BUILD_PATH}/ModSecurity-nginx-${vars.MODSECURITY_NGINX_VERSION}}  \
-      --add-dynamic-module=${BUILD_PATH}/ngx_http_geoip2_module-${{vars.GEOIP2_VERSION}}  \
+      --add-module=${BUILD_PATH}/ngx_devel_kit-"${{vars.NDK_VERSION}}" \
+      --add-module=${BUILD_PATH}/set-misc-nginx-module-"${{vars.SETMISC_VERSION}}" \
+      --add-module=${BUILD_PATH}/headers-more-nginx-module-"${{vars.MORE_HEADERS_VERSION}}" \
+      --add-module=${BUILD_PATH}/ngx_http_substitutions_filter_module-"${{vars.NGINX_SUBSTITUTIONS}}" \
+      --add-module=${BUILD_PATH}/lua-nginx-module-"${{vars.LUA_NGX_VERSION}}" \
+      --add-module=${BUILD_PATH}/stream-lua-nginx-module-"${{vars.LUA_STREAM_NGX_VERSION}}" \
+      --add-module=${BUILD_PATH}/lua-upstream-nginx-module-"${{vars.LUA_UPSTREAM_VERSION}}"  \
+      --add-module=${BUILD_PATH}/nginx_ajp_module-"${{vars.NGINX_AJP_VERSION}}" \
+      --add-dynamic-module=${BUILD_PATH}/nginx-http-auth-digest-"${{vars.NGINX_DIGEST_AUTH}}"  \
+      --add-dynamic-module=${BUILD_PATH}/nginx-opentracing-"${{vars.NGINX_OPENTRACING_VERSION}}"/opentracing \
+      --add-dynamic-module=${BUILD_PATH}/ModSecurity-nginx-"${vars.MODSECURITY_NGINX_VERSION}}"  \
+      --add-dynamic-module=${BUILD_PATH}/ngx_http_geoip2_module-"${{vars.GEOIP2_VERSION}}"  \
       --add-dynamic-module=${BUILD_PATH}/ngx_brotli"
 
       # "Combining -flto with -g is currently experimental and expected to produce unexpected results."
@@ -403,7 +401,7 @@ pipeline:
       ${WITH_MODULES}
 
       echo "::::::::::::::::::::::::::::::::::::::::::"
-      echo ":::: MAKE nginx-${{vars..NGINX_VERSION }} ::::"
+      echo ":::: MAKE nginx-${{vars.NGINX_VERSION }} ::::"
       echo "::::::::::::::::::::::::::::::::::::::::::"
       make
 
@@ -432,18 +430,18 @@ pipeline:
       echo "Clean up everything else"
       cd ${BUILD_PATH}
 
-      rm -rf *.tar.gz ${BUILD_PATH}/ngx_devel_kit-${{vars.NDK_VERSION}} \
-      ${BUILD_PATH}/set-misc-nginx-module-${{vars.SETMISC_VERSION}} \
-      ${BUILD_PATH}/headers-more-nginx-module-${{vars.MORE_HEADERS_VERSION}} \
-      ${BUILD_PATH}/ngx_http_substitutions_filter_module-${{vars.NGINX_SUBSTITUTIONS}}  \
-      ${BUILD_PATH}/lua-nginx-module-${{vars.LUA_NGX_VERSION}}  \
-      ${BUILD_PATH}/stream-lua-nginx-module-${{vars.LUA_STREAM_NGX_VERSION}}  \
-      ${BUILD_PATH}/lua-upstream-nginx-module-${{vars.LUA_UPSTREAM_VERSION}}  \
-      ${BUILD_PATH}/nginx_ajp_module-${{vars.NGINX_AJP_VERSION}}  \
-      ${BUILD_PATH}/nginx-http-auth-digest-${{vars.NGINX_DIGEST_AUTH}}  \
-      ${BUILD_PATH}/nginx-opentracing-${{vars.NGINX_OPENTRACING_VERSION}}/opentracing \
-      ${BUILD_PATH}/ModSecurity-nginx-${{vars.MODSECURITY_NGINX_VERSION}}  \
-      ${BUILD_PATH}/ngx_http_geoip2_module-${{vars.GEOIP2_VERSION}}  \
+      rm -rf *.tar.gz ${BUILD_PATH}/ngx_devel_kit-"${{vars.NDK_VERSION}}" \
+      ${BUILD_PATH}/set-misc-nginx-module-"${{vars.SETMISC_VERSION}}" \
+      ${BUILD_PATH}/headers-more-nginx-module-"${{vars.MORE_HEADERS_VERSION}}" \
+      ${BUILD_PATH}/ngx_http_substitutions_filter_module-"${{vars.NGINX_SUBSTITUTIONS}}"  \
+      ${BUILD_PATH}/lua-nginx-module-"${{vars.LUA_NGX_VERSION}}"  \
+      ${BUILD_PATH}/stream-lua-nginx-module-"${{vars.LUA_STREAM_NGX_VERSION}}"  \
+      ${BUILD_PATH}/lua-upstream-nginx-module-"${{vars.LUA_UPSTREAM_VERSION}}"  \
+      ${BUILD_PATH}/nginx_ajp_module-"${{vars.NGINX_AJP_VERSION}}"  \
+      ${BUILD_PATH}/nginx-http-auth-digest-"${{vars.NGINX_DIGEST_AUTH}}"  \
+      ${BUILD_PATH}/nginx-opentracing-"${{vars.NGINX_OPENTRACING_VERSION}}"/opentracing \
+      ${BUILD_PATH}/ModSecurity-nginx-"${{vars.MODSECURITY_NGINX_VERSION}}"  \
+      ${BUILD_PATH}/ngx_http_geoip2_module-"${{vars.GEOIP2_VERSION}}"  \
       ${BUILD_PATH}/ngx_brotli
 
 update:
