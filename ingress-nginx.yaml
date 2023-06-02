@@ -60,7 +60,7 @@ environment:
       - libxml2
       - python3
       - libsrt
-      - opentracing
+      - opentracing-cpp-dev
       - msgpack
       - datadog-cpp
       - yaml-cpp
@@ -206,10 +206,6 @@ pipeline:
 
       mkdir -p ${{targets.destdir}}/etc/nginx/
       cp -R etc/nginx/geoip/ ${{targets.destdir}}/etc/nginx/
-      cp -R etc/nginx/lua/ ${{targets.destdir}}/etc/nginx/
-      cp -R etc/nginx/template/ ${{targets.destdir}}/etc/nginx/
-      cp -R etc/nginx/nginx.conf ${{targets.destdir}}/etc/nginx/
-      cp -R etc/nginx/opentracing.json ${{targets.destdir}}/etc/nginx/
 
       # Get Brotli source and deps
       echo "::::::::::::::::::::::::::::::::::::::"
