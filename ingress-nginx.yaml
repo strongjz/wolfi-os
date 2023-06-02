@@ -221,7 +221,7 @@ pipeline:
       git submodule update
 
 
-      git clone --depth=1 -b ${{ vars.MODSECURITY_LIB_VERSION }} https://github.com/SpiderLabs/ModSecurity
+      git clone --depth=1 -b ${{vars.MODSECURITY_LIB_VERSION}} https://github.com/SpiderLabs/ModSecurity
 
       mkdir -p ${{targets.destdir}}/etc/nginx/modsecurity
       cp ModSecurity/modsecurity.conf-recommended ${{targets.destdir}}/etc/nginx/modsecurity/modsecurity.conf
@@ -345,7 +345,7 @@ pipeline:
       --add-module=${BUILD_PATH}/nginx_ajp_module-"${{vars.NGINX_AJP_VERSION}}" \
       --add-dynamic-module=${BUILD_PATH}/nginx-http-auth-digest-"${{vars.NGINX_DIGEST_AUTH}}"  \
       --add-dynamic-module=${BUILD_PATH}/nginx-opentracing-"${{vars.NGINX_OPENTRACING_VERSION}}"/opentracing \
-      --add-dynamic-module=${BUILD_PATH}/ModSecurity-nginx-"${vars.MODSECURITY_NGINX_VERSION}}"  \
+      --add-dynamic-module=${BUILD_PATH}/ModSecurity-nginx-"${{vars.MODSECURITY_NGINX_VERSION}}"  \
       --add-dynamic-module=${BUILD_PATH}/ngx_http_geoip2_module-"${{vars.GEOIP2_VERSION}}"  \
       --add-dynamic-module=${BUILD_PATH}/ngx_brotli"
 
