@@ -27,17 +27,12 @@ pipeline:
       tag: controller-v${{package.version}}
       expected-commit: 3476232f5c38383dd157ddaff3b4c7cebd57284e
   - name: Build ingress-nginx controller from source
-    with:
-      PKG: {{ .PKG }}
-      TAG: {{ .TAG }}
-      COMMIT_SHA: {{ .COMMIT_SHA }}
-      REPO_INFO: {{ .REPO_INFO }}
     runs: |
       set -o errexit
       set -o nounset
       set -o pipefail
 
-      export PKG="k8s.io/ingress-nginx""
+      export PKG="k8s.io/ingress-nginx"
       export COMMIT_SHA=$(git rev-parse --short HEAD)
       export REPO_INFO=$(git config --get remote.origin.url)$
 
@@ -50,7 +45,21 @@ pipeline:
       -X ${PKG}/version.RELEASE=controller-v${{package.version}} \
       -X ${PKG}/version.COMMIT=${COMMIT_SHA} \
       -X ${PKG}/version.REPO=${REPO_INFO}" \
+      -o "${{targets.destdir}}/dbg" ${PKG}/cmd/dbg
+
+      go build -v \
+      -trimpath -ldflags="-buildid= -w -s \
+      -X ${PKG}/version.RELEASE=controller-v${{package.version}} \
+      -X ${PKG}/version.COMMIT=${COMMIT_SHA} \
+      -X ${PKG}/version.REPO=${REPO_INFO}" \
+      -o "${{targets.destdir}}/waitshutdown" ${PKG}/cmd/waitshutdown
+
+      go build -v \
+      -trimpath -ldflags="-buildid= -w -s \
+      -X ${PKG}/version.RELEASE=controller-v${{package.version}} \
+      -X ${PKG}/version.COMMIT=${COMMIT_SHA} \
+      -X ${PKG}/version.REPO=${REPO_INFO}" \
       -o "${{targets.destdir}}/nginx-ingress-controller" ${PKG}/cmd/nginx
 
       setcap cap_net_bind_service=+ep ${{targets.destdir}}/nginx-ingress-controller \
-      && setcap -v cap_net_bind_service=+ep ${{targets.destdir}}/nginx-ingress-controller \
+      && setcap -v cap_net_bind_service=+ep ${{targets.destdir}}/nginx-ingress-controller
