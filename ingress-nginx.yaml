@@ -203,6 +203,7 @@ pipeline:
       ln -s $LUA_INCLUDE_DIR /usr/include/lua5.1
 
       ARCH=$(uname -m)
+
       mkdir -p ${{targets.destdir}}/etc/nginx/
       cp -R etc/nginx/geoip/ ${{targets.destdir}}/etc/nginx/
       cp -R etc/nginx/lua/ ${{targets.destdir}}/etc/nginx/
