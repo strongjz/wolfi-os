@@ -72,4 +72,3 @@ update:
     identifier: kubernetes/ingress-nginx
     strip-prefix: controller-v
     use-tag: true
-    tag-filter: helm-chart
