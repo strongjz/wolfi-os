@@ -66,7 +66,7 @@ pipeline:
       setcap cap_net_bind_service=+ep ${{targets.destdir}}/nginx-ingress-controller \
       && setcap -v cap_net_bind_service=+ep ${{targets.destdir}}/nginx-ingress-controller
 
-updates:
+update:
   enabled: true
   github:
     identifier: kubernetes/ingress-nginx
