@@ -26,7 +26,6 @@ pipeline:
   - uses: autoconf/make
 
   - uses: autoconf/make-install
-    strip-components: 1
 
 update:
   enabled: false
