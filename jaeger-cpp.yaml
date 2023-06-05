@@ -16,15 +16,7 @@ environment:
       - ca-certificates-bundle
       - build-base
       - yaml-cpp
-<<<<<<< HEAD
-      - opentracing-cpp
       - yaml-cpp-dev
-      - linux-headers
-      - gcc
-      - cmake
-=======
-      - yaml-cpp-dev
->>>>>>> 5cc7b32e (adding packages for ingress-nginx controller)
 
 pipeline:
   - uses: fetch
@@ -35,56 +27,23 @@ pipeline:
 
   - name: 'Configure Jaeger'
     runs: |
-<<<<<<< HEAD
-      sed -i 's/-Werror/-Wno-psabi/' CMakeLists.txt
-       # use the above built yaml-cpp instead until a new version of jaeger-client-cpp fixes the yaml-cpp issue
-=======
       mkdir -p ${{targets.destdir}}/etc/nginx
 
       # build jaeger lib
       sed -i 's/-Werror/-Wno-psabi/' CMakeLists.txt
       # use the above built yaml-cpp instead until a new version of jaeger-client-cpp fixes the yaml-cpp issue
->>>>>>> 5cc7b32e (adding packages for ingress-nginx controller)
       # tl;dr new hunter is needed for new yaml-cpp, but new hunter has a conflict with old Thrift and new Boost
       sed -i 's/hunter_add_package(yaml-cpp)/#hunter_add_package(yaml-cpp)/' CMakeLists.txt
       sed -i 's/yaml-cpp::yaml-cpp/yaml-cpp/' CMakeLists.txt
 
       cat <<EOF > export.map
       {
-<<<<<<< HEAD
-          global:
-              OpenTracingMakeTracerFactory;
-=======
         global:
           OpenTracingMakeTracerFactory;
->>>>>>> 5cc7b32e (adding packages for ingress-nginx controller)
           local: *;
       };
       EOF
 
-<<<<<<< HEAD
-       mkdir .build
-       cd .build
-
-       cmake -DCMAKE_BUILD_TYPE=Release \
-       -DBUILD_TESTING=OFF \
-       -Wunused-parameter \
-       -DJAEGERTRACING_BUILD_EXAMPLES=OFF \
-       -DJAEGERTRACING_BUILD_CROSSDOCK=OFF \
-       -DJAEGERTRACING_COVERAGE=OFF \
-       -DJAEGERTRACING_PLUGIN=ON \
-       -DHUNTER_CONFIGURATION_TYPES=Release \
-       -DBUILD_SHARED_LIBS=OFF \
-       -DJAEGERTRACING_WITH_YAML_CPP=ON \
-       -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true \
-       ..
-
-        make
-        make install
-
-
-         mv libjaegertracing_plugin.so /usr/local/lib/libjaegertracing_plugin.so
-=======
   - uses: cmake/configure
     with:
       opt: |
@@ -104,7 +63,6 @@ pipeline:
   - uses: cmake/build
 
   - uses: cmake/install
->>>>>>> 5cc7b32e (adding packages for ingress-nginx controller)
 
 update:
   enabled: false
