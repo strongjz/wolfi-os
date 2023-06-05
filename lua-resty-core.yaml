@@ -1,0 +1,40 @@
+package:
+  name: lua-resty-core
+  version: 0.1.17
+  epoch: 0
+  description: "lua-resty-core - New FFI-based Lua API for ngx_http_lua_module and/or ngx_stream_lua_module"
+  copyright:
+    - license: BSD
+  dependencies:
+    runtime:
+
+environment:
+  contents:
+    packages:
+      - wolfi-base
+      - busybox
+      - ca-certificates-bundle
+      - build-base
+      - luajit
+
+pipeline:
+  - uses: fetch
+    with:
+      uri: https://github.com/openresty/lua-resty-core/archive/v${{package.version}}.tar.gz
+      expected-sha256: 8f5f76d2689a3f6b0782f0a009c56a65e4c7a4382be86422c9b3549fe95b0dc4
+<<<<<<< HEAD
+
+  - uses: autoconf/make
+
+  - uses: autoconf/make-install
+=======
+      strip-components: 1
+
+  - name: "Configure"
+    runs: |
+      make
+      make DESTDIR="${{targets.destdir}}" install
+>>>>>>> 5cc7b32e (adding packages for ingress-nginx controller)
+
+update:
+  enabled: false
