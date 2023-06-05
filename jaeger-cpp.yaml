@@ -17,6 +17,8 @@ environment:
       - build-base
       - yaml-cpp
       - yaml-cpp-dev
+      - cmake
+      - make
 
 pipeline:
   - uses: fetch
@@ -44,9 +46,9 @@ pipeline:
       };
       EOF
 
-  - uses: cmake/configure
-    with:
-      opt: |
+      cmake \
+        -Werror=maybe-uninitialized \
+        -Wno-dev \
         -DHUNTER_STATUS_DEBUG=ON \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=${{targets.destdir}} \
@@ -60,9 +62,9 @@ pipeline:
         -DJAEGERTRACING_WITH_YAML_CPP=ON \
         -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true
 
-  - uses: cmake/build
+      make
 
-  - uses: cmake/install
+      make install
 
 update:
   enabled: false
